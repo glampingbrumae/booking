@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin - Brumae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 360px;
+    }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      font-size: 1.2rem;
+    }
+    .subtitle {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .field-group {
+      margin-bottom: 0.9rem;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      border: none;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: #3b5c4c;
+      color: white;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+    .msg {
+      margin-top: 0.7rem;
+      font-size: 0.85rem;
+      min-height: 1rem;
+    }
+    .msg.error {
+      color: #b00020;
+    }
+    .msg.ok {
+      color: #1b5e20;
+    }
+    .helper {
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Acceso administrador</h1>
+    <div class="subtitle">Ingresa para gestionar las reservas de Brumae.</div>
+
+    <form id="loginForm">
+      <div class="field-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" required />
+      </div>
+      <div class="field-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" required />
+      </div>
+      <button type="submit" id="loginBtn">Entrar</button>
+      <div class="msg" id="loginMsg"></div>
+      <div class="helper">
+        (Puedes cambiar usuario/contraseña en el archivo <code>.env</code>)
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('loginMsg');
+    const btn = document.getElementById('loginBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+      msg.className = 'msg';
+      btn.disabled = true;
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      try {
+        const res = await fetch('/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          msg.textContent = data.error || 'Error en el inicio de sesión.';
+          msg.classList.add('error');
+          btn.disabled = false;
+          return;
+        }
+
+        msg.textContent = 'Ingreso correcto, redirigiendo...';
+        msg.classList.add('ok');
+        setTimeout(() => {
+          window.location.href = '/admin.html';
+        }, 500);
+      } catch (err) {
+        console.error(err);
+        msg.textContent = 'Error de conexión con el servidor.';
+        msg.classList.add('error');
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

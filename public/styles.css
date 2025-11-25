@@ -1,0 +1,503 @@
+/* ====== ESTILOS GENERALES ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f3;
+  color: #1f2933;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.2rem 1rem 2rem;
+}
+
+/* ====== HEADER ====== */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  height: 52px;
+  width: auto;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.title-block span {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ====== HERO ====== */
+
+.hero {
+  background: linear-gradient(135deg, #243b53, #3b5c4c);
+  color: white;
+  border-radius: 18px;
+  padding: 1.3rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero h2 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+}
+
+.hero p {
+  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ====== BOTONES ====== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.btn-primary {
+  background: #fbbf24;
+  color: #1f2933;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  background: #f59e0b;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ====== SECCIONES ====== */
+
+.section {
+  margin-top: 1.6rem;
+  margin-bottom: 1.9rem;
+}
+
+.section-title {
+  margin: 0 0 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* ====== CARD / GRID ====== */
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+}
+
+/* ====== LISTAS BONITAS ====== */
+
+.nice-list {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+}
+
+.nice-list li {
+  margin-bottom: 0.25rem;
+}
+
+.helper-text {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ====== CALENDARIO ====== */
+
+.date-range-picker {
+  font-size: 0.82rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-month {
+  font-weight: 600;
+}
+
+.calendar-nav {
+  border: none;
+  background: #e5e7eb;
+  border-radius: 999px;
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.calendar-weekdays > div {
+  padding: 0.2rem 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.15rem;
+}
+
+.calendar-cell.empty {
+  visibility: hidden;
+}
+
+.calendar-day {
+  border: none;
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 10px;
+  padding: 0.3rem 0;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.calendar-day:hover {
+  background: #e5e7eb;
+}
+
+/* Hoy */
+.calendar-day.today {
+  border: 1px solid #3b82f6;
+}
+
+/* Fechas seleccionadas */
+.calendar-day.selected {
+  background: #3b5c4c;
+  color: #ffffff;
+}
+
+.calendar-day.in-range {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.calendar-day.start,
+.calendar-day.end {
+  font-weight: 700;
+}
+
+/* Día completamente reservado (2 cabañas confirmadas) */
+.calendar-day.date-disabled {
+  background: #e0e0e0;
+  color: #9e9e9e;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.calendar-day.date-disabled:hover {
+  background: #d4d4d4;
+}
+
+/* ====== FORMULARIO ====== */
+
+.field-group {
+  text-align: left !important;
+  width: 100%;
+}
+
+.field-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.field-group input:not([type="checkbox"]):not([type="radio"]),
+.field-group textarea,
+.field-group select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.field-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;     
+  justify-content: flex-start;
+  gap: 0.4rem;             
+  text-align: left;
+  width: 100%;
+}
+
+.field-group label.checkbox-row {
+  display: flex;
+  margin: 0;              /* por si acaso había márgenes raros */
+}
+
+.checkbox-row input[type="checkbox"] {
+  margin: 0;               /* Quita margen por defecto del checkbox */
+  width: auto;            
+  flex: 0 0 auto;
+}
+
+
+/* ====== RESUMEN ====== */
+
+.notice {
+  background: #ecfdf5;
+  border-radius: 12px;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.85rem;
+  color: #064e3b;
+}
+
+/* ====== RESULTADO FORM ====== */
+
+.result-message {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  min-height: 1rem;
+}
+
+.result-message.success {
+  color: #166534;
+}
+
+.result-message.error {
+  color: #b91c1c;
+}
+
+/* ====== CARRUSEL ====== */
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+  margin-bottom: 0.8rem;
+  background: #111827;
+}
+
+/* Altura del carrusel */
+.carousel-container {
+  height: 280px;
+}
+
+@media (min-width: 768px) {
+  .carousel-container {
+    height: 420px;
+  }
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+/* Punticos del carrusel */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.carousel-dots .dot {
+  width: 9px;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.carousel-dots .dot.active {
+  background: #ffffff;
+}
+
+/* Flechas del carrusel */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(3px);
+  transition: background 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+/* Opcional: ocultar flechas en pantallas muy pequeñas */
+@media (max-width: 600px) {
+  .carousel-btn {
+    display: none;
+  }
+}
+
+/* ====== INSTAGRAM CALLOUT ====== */
+
+.instagram-callout {
+  margin: 0.8rem 0 1.1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  background: #f5f7f6;
+  font-size: 0.9rem;
+  color: #3b4a43;
+}
+
+.instagram-callout a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #3b5c4c;
+}
+
+.instagram-callout a:hover {
+  text-decoration: underline;
+}
+
+/* ====== FOOTER ====== */
+
+footer {
+  margin-top: 1.8rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+footer a {
+  color: #3b5c4c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero {
+    padding: 1rem 0.9rem;
+  }
+}

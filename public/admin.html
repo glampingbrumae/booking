@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Glamping Brumae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 1rem;
+      color: #222;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .btn-refresh {
+      background: #3b5c4c;
+      color: white;
+    }
+    .btn-delete {
+      background: #b00020;
+      color: white;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .filters {
+      font-size: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+      align-items: center;
+      margin-bottom: 0.7rem;
+    }
+    .filters label {
+      font-size: 0.8rem;
+    }
+    .filters input,
+    .filters select {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    th, td {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #3b5c4c;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .status-badge {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      display: inline-block;
+      text-transform: capitalize;
+    }
+    .PENDIENTE {
+      background: #fff7e0;
+      color: #8a5a00;
+    }
+    .CONFIRMADA {
+      background: #e6f6ec;
+      color: #215a38;
+    }
+    .CANCELADA {
+      background: #ffe7e5;
+      color: #9e1b22;
+    }
+
+    .status-select {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.3rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .text-muted {
+      color: #777;
+      font-size: 0.75rem;
+    }
+
+    .wa-link {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #25d366;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+    }
+    .wa-link.disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="top-bar">
+    <div>
+        <h1>Panel de reservas - Brumae</h1>
+        <div class="text-muted">
+        Visualiza, actualiza estado o elimina reservas. Los valores mostrados son estimados según noches, persona extra y decoración.
+        </div>
+    </div>
+
+    <div style="display:flex; gap:0.5rem;">
+        <button class="btn btn-refresh" id="refreshBtn">Actualizar lista</button>
+        <button class="btn btn-logout" id="logoutBtn" style="background:#b00020;color:white;">
+        Cerrar sesión
+        </button>
+    </div>
+    </div>
+
+  <div class="filters">
+    <div>
+      <label for="filterStatus">Estado:</label>
+      <select id="filterStatus">
+        <option value="TODOS">Todos</option>
+        <option value="PENDIENTE">Pendiente</option>
+        <option value="CONFIRMADA">Confirmada</option>
+        <option value="CANCELADA">Cancelada</option>
+      </select>
+    </div>
+    <div>
+      <label for="filterFrom">Desde:</label>
+      <input type="date" id="filterFrom">
+    </div>
+    <div>
+      <label for="filterTo">Hasta:</label>
+      <input type="date" id="filterTo">
+    </div>
+    <button class="btn" id="applyFiltersBtn">Aplicar filtros</button>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Contacto</th>
+          <th>Fechas / Noches</th>
+          <th>Personas</th>
+          <th>Extra</th>
+          <th>Decoración</th>
+          <th>Total estimado</th>
+          <th>WhatsApp</th>
+          <th>Estado</th>
+          <th>Cambiar estado</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody id="bookingsBody"></tbody>
+    </table>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

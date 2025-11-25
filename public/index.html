@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glamping Brumae - Reservas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <img src="img/logo-brumae.png" alt="Logo Glamping Brumae" class="logo" />
+      <div class="title-block">
+        <h1>Glamping Brumae</h1>
+        <span>Naturaleza · Cielo estrellado  · Espacio para conectar</span>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Reserva tu experiencia entre bruma y estrellas</h2>
+      <p>
+        Cabaña tipo glamping con jacuzzi, vista a las montañas y detalles pensados
+        para que te desconectes de la ciudad. Reserva en pocos pasos y recibe la
+        confirmación por WhatsApp.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#reservas" class="btn btn-primary">Reservar ahora</a>
+        <a href="#info-cabana" class="btn btn-outline">Ver detalles de la cabaña</a>
+      </div>
+    </section>
+
+    <!-- INFO CABAÑAS -->
+    <section id="info-cabana" class="section">
+      <h2 class="section-title">Tu refugio en Brumae</h2>
+      <p class="section-subtitle">
+        Una cabaña acogedora a solo 30 minutos de Medellín, ideal para compartir con tu pareja.
+      </p>
+
+      <div class="card">
+        <!-- Carrusel de fotos -->
+        <div class="carousel-container">
+          <div class="carousel-track">            
+            <img src="fotos/cabana-1.jpg" alt="Vista general cabaña Brumae" />
+            <img src="fotos/cabana-2.jpg" alt="Interior cabaña Brumae" />
+            <img src="fotos/cabana-3.jpg" alt="Jacuzzi en Brumae" />
+            <img src="fotos/cabana-4.jpg" alt="Fogata y noche estrellada" />
+            <img src="fotos/cabana-5.jpg" alt="Zona de descanso" />
+            <img src="fotos/cabana-6.jpg" alt="Desayuno en la cabaña" />
+          </div>
+          
+          <!-- Flechas -->
+          <button class="carousel-btn prev">&#10094;</button>
+          <button class="carousel-btn next">&#10095;</button>
+
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- Invitación Instagram -->
+        <div class="instagram-callout">
+          <p>
+            ¿Quieres ver más fotos y detalles de nuestra cabaña y la experiencia en Brumae?
+            Ve nuestro Instagram
+            <a href="https://www.instagram.com/brumaeglamping" target="_blank" rel="noopener">
+              @brumaeglamping
+            </a>.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div>
+            <h3>💫 Tu experiencia incluye:</h3>
+            <ul class="nice-list">
+              <li>🍳 Ingredientes para preparar tu desayuno</li>
+              <li>🔥 Malvaviscos para tu fogata</li>
+              <li>🍹 Dos copas de sangría de cortesía</li>
+              <li>🫧 Jacuzzi privado</li>
+            </ul>
+            <br />
+
+            <h3 style="margin-top:0.8rem;">👥 Capacidad</h3>
+            <p>
+              Capacidad para hasta <strong>3 personas</strong>.<br />
+              Precio base para <strong>2 personas</strong>.<br />
+              Persona adicional suma un valor fijo de <strong>$90.000 por noche</strong>.
+            </p>
+            <br />
+
+            <h3>📍 Ubicación - Cómo llegar</h3>
+            <p>
+              Estamos ubicados en Guarne, Antioquia, cerca al restaurante El Rancherito,
+              en una zona tranquila y de fácil acceso.
+              <a href="https://www.instagram.com/stories/highlights/18124338523471041/" target="_blank">
+                Indicaciones para llegar
+              </a>
+            </p>
+            <br>
+
+            <h3>🕒 Horarios</h3>
+            <p class="helper-text">
+              Check in: desde las <strong>3:00 p.m.</strong><br />
+              Check out: hasta las <strong>12:00 p.m.</strong>
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-top:0.8rem;">💰 Política de reserva</h3>
+            <p class="helper-text">
+              Para confirmar la reserva pedimos un <strong>anticipo del 50%</strong><br />
+              (no reembolsable en caso de cancelación, pero con posibilidad de
+              <strong>reprogramar tu fecha hasta 48 horas</strong> antes del check-in).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="reservas" class="section">
+      <h2 class="section-title">Reserva tu estadía</h2>
+      <p class="section-subtitle">
+        Selecciona las fechas de tu estadía, indica si llevas una persona extra y
+        si deseas decoración especial. Te mostraremos un valor estimado según noches entre
+        semana y fines de semana/festivos.
+      </p>
+
+      <div class="grid grid-2">
+        <!-- CALENDARIO + RESUMEN -->
+        <div class="card">
+          <h3 style="font-size:1rem;margin-bottom:0.5rem;">Selecciona tus fechas</h3>
+          <div id="dateRangePicker" class="date-range-picker"></div>
+
+          <!-- Persona extra-->
+          <div class="field-group" style="margin-top:1.8rem;">
+            <label class="checkbox-row">
+              <input type="checkbox" id="extra_person" />
+              <span>Agregar 1 persona extra (+$90.000 por noche)</span>
+            </label>
+          </div>
+
+          <!-- Decoración especial-->
+          <div class="field-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="decoration" />
+              <span>Agregar decoración especial (+$50.000 por estadía)</span>
+            </label>
+          </div>
+
+          <!-- Motivo de la ocasión también debajo de decoración -->
+          <div class="field-group" id="decorationReasonGroup" style="display:none;">
+            <label for="decoration_reason">Motivo de la ocasión</label>
+            <select id="decoration_reason">
+              <option value="">Selecciona una opción</option>
+              <option value="Aniversario">Aniversario</option>
+              <option value="Cumpleaños">Cumpleaños</option>
+              <option value="Pedida de mano">Pedida de mano</option>
+              <option value="Otra">Otro...</option>
+            </select>
+          </div>
+
+          <div class="field-group" id="decorationReasonCustomGroup" style="display:none;">
+            <label for="decoration_reason_custom">Cuéntanos el motivo</label>
+            <input
+              type="text"
+              id="decoration_reason_custom"
+              placeholder="Ej: Aniversario 5 años, Baby shower..."
+            />
+          </div>
+
+          <div id="summaryBox" class="notice" style="margin-top:0.8rem;display:none;"></div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="card">
+          <form id="bookingForm">
+            <!-- inputs ocultos que se rellenan con el calendario -->
+            <input type="hidden" id="check_in" name="check_in" />
+            <input type="hidden" id="check_out" name="check_out" />
+
+            <div class="field-group">
+              <label for="client_name">Nombre completo</label>
+              <input type="text" id="client_name" name="client_name" required />
+            </div>
+
+            <div class="field-group">
+              <label for="client_phone">WhatsApp del huésped</label>
+              <input type="tel" id="client_phone" name="client_phone" required placeholder="+57 3xx xxx xxxx" />
+            </div>
+
+            <div class="field-group">
+              <label for="client_email">Correo electrónico (opcional)</label>
+              <input type="email" id="client_email" name="client_email" placeholder="tucorreo@ejemplo.com" />
+            </div>
+
+            <div class="field-group">
+              <label for="extras">Comentarios (alergias, horarios especiales, etc.)</label>
+              <textarea
+                id="extras"
+                name="extras"
+                placeholder="Cuéntanos si necesitas algo adicional."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.6rem;">
+              Enviar solicitud de reserva
+            </button>
+
+            <div id="formMessage" class="result-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Glamping Brumae · Guarne, Antioquia, Colombia ·
+      <a href="https://wa.me/573123228719" target="_blank">WhatsApp oficial</a>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
